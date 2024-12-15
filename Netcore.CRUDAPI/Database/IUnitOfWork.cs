@@ -7,6 +7,9 @@ namespace Netcore.CRUDAPI.Database
 	{
 		IRepository<Category> CategoryRepository { get; }
 		IRepository<Product> ProductRepository { get; }
+		IRepository<Order> OrderRepository { get; }
+		IRepository<Shipping> ShippingRepository { get; }
+		IRepository<OutboxMessage> OutboxMessageRepository { get; }
 		Task<int> SaveChangesAsync();
 	}
 }

@@ -10,6 +10,9 @@ namespace Netcore.CRUDAPI.AutoMapper
 		{
 			CreateMap<Category, CategoryDto>().ReverseMap();
 			CreateMap<Product, ProductDto>().ReverseMap();
+			CreateMap<Order, OrderDto>().ReverseMap();
+			CreateMap<Shipping, ShippingDto>().ReverseMap();
+			CreateMap<OrderItem, OrderItemDto>().ReverseMap();
 		}
 	}
 }

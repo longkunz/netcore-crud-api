@@ -8,6 +8,10 @@ namespace Netcore.CRUDAPI.Database
 	{
 		DbSet<Category> Categories { get; set; }
 		DbSet<Product> Products { get; set; }
+		DbSet<Order> Orders { get; set; } // <--- NEW <--->
+		DbSet<OrderItem> OrderItems { get; set; } // <--- NEW <--->
+		DbSet<Shipping> Shippings { get; set; }
+		DbSet<OutboxMessage> OutboxMessages { get; set; }
 		void Dispose();
 		EntityEntry Entry(object entity);
 		Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

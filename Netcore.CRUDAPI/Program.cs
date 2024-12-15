@@ -13,10 +13,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IRepository<Category>, CategoryRepository>();
 builder.Services.AddScoped<IRepository<Product>, ProductRepository>();
+builder.Services.AddScoped<IRepository<Shipping>, ShippingRepository>();
+builder.Services.AddScoped<IRepository<OutboxMessage>, OutboxMessageRepository>();
+builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
 builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>()!);
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IShippingService, ShippingService>();
+builder.Services.AddHostedService<OutboxProcessor>();
 
 
 builder.Services.AddControllers();

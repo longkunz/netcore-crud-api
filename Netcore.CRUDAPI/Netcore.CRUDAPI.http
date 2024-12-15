@@ -1,0 +1,6 @@
+@Netcore.CRUDAPI_HostAddress = http://localhost:5139
+
+GET {{Netcore.CRUDAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

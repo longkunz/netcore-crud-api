@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  webapi:
+    image: dotnetapi # Tên image của ứng dụng
+    build:
+      context: .
+      dockerfile: Dockerfile # Đường dẫn đến Dockerfile của ứng dụng
+    ports:
+      - "8000:8080" # Map port 8000 của host machine đến port 80 của container
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Port=5432;Database=dotnetapi;User Id=postgres;Password=password
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dotnetapi
+    ports:
+      - "5432:5432" # Map port 5432 của host machine đến port 5432 của container
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Lưu trữ dữ liệu PostgreSQL trong volume
+
+volumes:
+  pgdata:
